@@ -11,10 +11,8 @@ const form = document.querySelector('.feedback-form');
 const emailInput = form.querySelector('input');
 const messageTextArea = form.querySelector('textarea');
 
-emailInput.addEventListener('input', handleEmailInput);
-messageTextArea.addEventListener('input', handleMessageInput);
-
 form.addEventListener('submit', handleSubmit);
+form.addEventListener('input', handleInput);
 
 emailInput.value = localStorageFormData.email;
 messageTextArea.value = localStorageFormData.message;
@@ -34,13 +32,9 @@ function handleSubmit(event) {
   form.reset();
 }
 
-function handleEmailInput(event) {
+function handleInput(event) {
   const { name, value } = event.target;
-  writeTolocalStorage(name, value);
-}
-
-function handleMessageInput(event) {
-  const { name, value } = event.target;
+  event.target.value = value.trim();
   writeTolocalStorage(name, value);
 }
 
