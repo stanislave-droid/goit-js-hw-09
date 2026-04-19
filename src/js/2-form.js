@@ -35,7 +35,7 @@ function handleSubmit(event) {
 function handleInput(event) {
   const { name, value } = event.target;
   event.target.value = value.trim();
-  writeTolocalStorage(name, value);
+  writeTolocalStorage(name, value.trim());
 }
 
 function checkLocalStorage() {
@@ -49,6 +49,6 @@ function checkLocalStorage() {
 }
 
 function writeTolocalStorage(key, value) {
-  formData[key] = value.trim();
+  formData[key] = value;
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
 }
